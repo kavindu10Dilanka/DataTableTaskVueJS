@@ -1,11 +1,7 @@
 <template>
-  <!-- Main container for the data table and its controls -->
   <div class="data-table-container">
-    <!-- Controls for search and rows per page selection -->
     <div class="controls">
-      <!-- Search input field, bound to searchQuery and triggers handleSearch on input -->
       <input v-model="searchQuery" @input="handleSearch" placeholder="Search..." class="search-input" />
-      <!-- Select dropdown for rows per page, bound to rowsPerPage and triggers handleRowsPerPageChange on change -->
       <select v-model="rowsPerPage" @change="handleRowsPerPageChange" class="rows-select">
         <option value="10">10</option>
         <option value="15">15</option>
@@ -13,11 +9,11 @@
         <option value="all">All</option>
       </select>
     </div>
-    <!-- Data table to display comments -->
+ 
     <table class="data-table">
       <thead>
         <tr>
-          <!-- Sortable column headers for ID and Email -->
+         
           <th @click="sort('id')">ID</th>
           <th>Name</th>
           <th @click="sort('email')">Email</th>
@@ -25,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Render paginated comments -->
+       
         <tr v-for="comment in paginatedComments" :key="comment.id">
           <td>{{ comment.id }}</td>
           <td>{{ comment.name }}</td>
@@ -34,14 +30,13 @@
         </tr>
       </tbody>
     </table>
-    <!-- Pagination controls -->
+
     <div class="pagination-controls">
-      <!-- Previous page button, disabled on the first page -->
+     
       <button @click="prevPage" :disabled="currentPage === 1" class="pagination-button">Previous</button>
-      <!-- Next page button, disabled on the last page -->
       <button @click="nextPage" :disabled="currentPage === totalPages" class="pagination-button">Next</button>
     </div>
-    <!-- Loading indicator -->
+
     <div v-if="loading" class="loading">Loading...</div>
   </div>
 </template>
